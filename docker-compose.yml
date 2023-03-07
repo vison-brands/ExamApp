@@ -1,0 +1,48 @@
+# Use postgres/example user/password credentials
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres
+    restart: always
+    ports: 
+      - "5432:5432"
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=wilcastiblanco
+      - POSTGRES_PASSWORD=Wc80114311.*
+      - POSTGRES_DB=DjangoCoursesDB
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports: 
+      - "80:80"
+    depends_on: 
+      - postgres
+
+
+# version: '3'
+
+# services:
+#   db:
+#     image: postgres
+#     restart: always
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: example
+#       POSTGRES_DB: example
+
+#   pgadmin:
+#     image: dpage/pgadmin4
+#     restart: always
+#     environment:
+#       PGADMIN_DEFAULT_EMAIL: admin@admin.com
+#       PGADMIN_DEFAULT_PASSWORD: admin
+#     ports:
+#       - "8080:80"
+#     depends_on:
+#       - db
